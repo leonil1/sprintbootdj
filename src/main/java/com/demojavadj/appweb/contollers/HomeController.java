@@ -7,34 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class HomeController {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
     @GetMapping("/")
     @ResponseBody
     public String home() {
@@ -57,7 +29,5 @@ public class HomeController {
     public String query_string (@RequestParam("id") Long id, @RequestParam("slug") String slug){
         return "id = "+ id +"| slug ="+ slug;
     }
-
-    */
 
 }
