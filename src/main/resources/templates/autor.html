@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+
+    <button>Agregar autor</button>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Apellido Parterno</th>
+                <th>Apellido Materno</th>
+                <th>Correo</th>
+                <th>Celular</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="autor:${listaAuthor}">
+                <td th:text="${autor.id}"></td>
+                <td th:text="${autor.nane}"></td>
+                <td th:text="${autor.firstName}"></td>
+                <td th:text="${autor.lastName}"></td>
+                <td th:text="${autor.email}"></td>
+                <td th:text="${autor.phone}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

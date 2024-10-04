@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<samp th:replace="layout/dashboard::header">
+
+</samp>
+<body>
+    <div >
+        <div class="card">
+            <h5 class="card-header">Lista de Autores</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                    <tr class="text-nowrap">
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Correo</th>
+                        <th>Celular</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="autor:${listaAuthor}">
+                            <td th:text="${autor.id}"></td>
+                            <td th:text="${autor.nane}"></td>
+                            <td th:text="${autor.firstName}"></td>
+                            <td th:text="${autor.lastName}"></td>
+                            <td th:text="${autor.email}"></td>
+                            <td th:text="${autor.phone}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<span th:replace="layout/dashboard::script">
+
+</span>
+</body>
+</html>
