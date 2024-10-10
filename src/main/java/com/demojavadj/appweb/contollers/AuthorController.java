@@ -39,7 +39,7 @@ public class AuthorController {
         Author author = new Author();
         model.addAttribute("title", "Agregar Autor");
         model.addAttribute("author", author);
-        return "addAuthor";
+        return "pages/form-author";
     }
 
     @PostMapping("save")
