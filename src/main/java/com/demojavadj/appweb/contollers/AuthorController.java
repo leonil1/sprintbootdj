@@ -42,7 +42,7 @@ public class AuthorController {
         return "pages/form-author";
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public String saveAuthor(@ModelAttribute("author") Author author){
         authorService.addAuthor(author);
         return "redirect:/";

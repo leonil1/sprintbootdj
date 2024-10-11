@@ -18,27 +18,28 @@
                                     <div class="col-sm-12">
                                         <div class="card-body">
                                             <h5 class="card-title text-primary">Registrar Autor 🎉</h5>
-                                            <form>
+                                            <form th:action="@{/author/save}" th:object="${author}" method="post">
                                                 <div>
                                                     <label>Nombre Autor</label>
-                                                    <input type="text" class="form-control" placeholder="Juanito">
+                                                    <input type="text" th:field="*{nane}" class="form-control" placeholder="Juanito">
                                                 </div>
                                                 <div>
                                                     <label>Apellido Paterno</label>
-                                                    <input type="text" class="form-control" placeholder=" perez">
+                                                    <input type="text" th:field="*{firstName}" class="form-control" placeholder=" perez">
                                                 </div>
                                                 <div>
                                                     <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control" placeholder="sanches">
+                                                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="sanches">
                                                 </div>
                                                 <div>
                                                     <label>Correo</label>
-                                                    <input type="text" class="form-control" placeholder="Juanito@gmail.com">
+                                                    <input type="text" th:field="*{email}" class="form-control" placeholder="Juanito@gmail.com">
                                                 </div>
                                                 <div>
                                                     <label>Telefono</label>
-                                                    <input type="text" class="form-control" placeholder="+5199968555">
+                                                    <input type="text" th:field="*{phone}" class="form-control" placeholder="+5199968555">
                                                 </div>
+                                                <button type="submit" class="btn btn-success btn-sm">Gurdar</button>
                                             </form>
                                         </div>
                                     </div>
