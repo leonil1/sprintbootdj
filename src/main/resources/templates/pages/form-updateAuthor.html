@@ -17,8 +17,11 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Registrar Autor 🎉</h5>
+                                            <h5 class="card-title text-primary">Actualizar Autor 🎉</h5>
                                             <form th:action="@{/author/save}" th:object="${author}" method="post">
+                                                <div>
+                                                    <input type="hidden" th:field="*{id}" />
+                                                </div>
                                                 <div>
                                                     <label>Nombre Autor</label>
                                                     <input type="text" th:field="*{nane}" class="form-control" placeholder="Juanito">
@@ -40,9 +43,8 @@
                                                     <input type="text" th:field="*{phone}" class="form-control" placeholder="+5199968555">
                                                 </div>
                                                 <div class="mt-3">
-                                                    <button type="submit" class="btn btn-success btn-sm">Gurdar</button>
+                                                    <button type="submit" class="btn btn-success btn-sm">Actualizar</button>
                                                 </div>
-
                                             </form>
                                         </div>
                                     </div>

@@ -30,13 +30,11 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author getAuthorById(Long id) {
         Optional<Author> author = authorRepository.findById(id);
-        Author authorObj = null;
-        if (author.isPresent()) {
+        Author  authorObj = null;
+        if (author.isPresent()){
             authorObj = author.get();
         } else {
-            throw new RuntimeException(
-                    "Author not found with id " + id
-            );
+            throw  new RuntimeException("Author not found with id" + id);
         }
         return authorObj;
     }
@@ -47,4 +45,23 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
 
+    /*
+    @Override
+    public Author getAuthorById(Long id) {
+       Optional<Author> author = authorRepository.findById(id);
+       Author authorObj = null;
+       if(author.isPresent()){
+           authorObj = author.get();
+       }else {
+           throw new RuntimeException("Author not found with id" + id);
+       }
+       return authorObj;
+    }
+
+    @Override
+    public void deleteAuthor(Long id) {
+        authorRepository.deleteById(id);
+    }
+
+    */
 }

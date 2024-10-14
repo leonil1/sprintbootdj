@@ -5,10 +5,7 @@ import com.demojavadj.appweb.models.Author;
 import com.demojavadj.appweb.services.impl.AuthorServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/author")
@@ -45,6 +42,33 @@ public class AuthorController {
     @PostMapping("/save")
     public String saveAuthor(@ModelAttribute("author") Author author){
         authorService.addAuthor(author);
-        return "redirect:/";
+        return "redirect:/author/list-allauthor";
     }
+
+    @GetMapping("/showUpdateAuthor/{id}")
+    public String updateAuthor(@PathVariable(value = "id") Long id, Model model){
+        Author author = authorService.getAuthorById(id);
+        model.addAttribute("author", author);
+        return "pages/form-updateAuthor";
+    }
+
+    @GetMapping("/delete-author/{id}")
+    public String deleteAuthor(@PathVariable(value = "id") Long id){
+        authorService.deleteAuthor(id);
+        return "redirect:/author/list-allauthor";
+    }
+/*
+    @GetMapping("/shoUpdateAuthor/{id}")
+    public String updateAuthor(@PathVariable(value = "id") Long id, Model model){
+        Author author = authorService.getAuthorById(id);
+        model.addAttribute("author", author);
+        return "pages/form-updateAuthor";
+    }
+
+    @GetMapping("/delete-author/{id}")
+    public String deleteAuthor(@PathVariable(value = "id") Long id){
+        authorService.deleteAuthor(id);
+        return "redirect:/author/list-allauthor";
+    }
+*/
 }

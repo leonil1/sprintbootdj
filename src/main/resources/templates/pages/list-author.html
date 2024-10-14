@@ -44,8 +44,8 @@
                                                             <td th:text="${autor.email}"></td>
                                                             <td th:text="${autor.phone}"></td>
                                                             <td>
-                                                                <a href="#" class="btn btn-warning">Editar</a>
-                                                                <a href="#" class="btn btn-danger">Eliminar</a>
+                                                                <a th:href="@{/author/showUpdateAuthor/{id}(id=${autor.id})}" class="btn btn-warning btn-sm">Editar</a>
+                                                                <a th:href="@{/author/delete-author/{id}(id=${autor.id})}" class="btn btn-danger btn-sm">Eliminar</a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
