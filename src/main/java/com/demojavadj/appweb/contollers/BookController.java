@@ -1,5 +1,6 @@
 package com.demojavadj.appweb.contollers;
 
+import com.demojavadj.appweb.services.impl.BookServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/book")
 public class BookController {
+
+    private final BookServiceImpl bookService;
+
+    public BookController(BookServiceImpl bookService) {
+        this.bookService = bookService;
+    }
+
+    @GetMapping("/list-books")
+    public String booksList(Model model) {
+        model.addAttribute("title", "Lista de Libros");
+        model.addAttribute("booksList", bookService.getAllBooks());
+        return "page/list-books";
+    }
 
     @GetMapping("/listar")
     public String listr(Model model){
