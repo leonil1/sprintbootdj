@@ -20,18 +20,19 @@
                                         <div class="card-body">
                                             <h5 class="card-title text-primary">Lista LIbros 🎉</h5>
                                             <div>
-                                                <a th:href="@{/author/nuevo}" class="btn btn-primary">nuevo</a>
+                                                <a th:href="@{/book/nuevo}" class="btn btn-primary">nuevo</a>
                                             </div>
                                             <div class="table-responsive text-nowrap">
                                                 <table class="table">
                                                     <thead>
                                                     <tr>
                                                         <th>id</th>
-                                                        <th>Nombre</th>
-                                                        <th>Apellido Parterno</th>
-                                                        <th>Apellido Materno</th>
-                                                        <th>Correo</th>
-                                                        <th>Celular</th>
+                                                        <th>Codigo Libro</th>
+                                                        <th>Nombre Libro</th>
+                                                        <th>Titulo Libro</th>
+                                                        <th>Fecha Publicación</th>
+                                                        <th>Codigo SBN</th>
+                                                        <th>Autor</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                     </thead>
@@ -41,12 +42,12 @@
                                                         <td th:text="${book.codeBook}"></td>
                                                         <td th:text="${book.name}"></td>
                                                         <td th:text="${book.title}"></td>
-                                                        <td th:text="${book.plubisher}"></td>
+                                                        <td th:text="${#dates.format(book., 'dd/MM/yyyy')}"></td>
                                                         <td th:text="${book.sbn}"></td>
-                                                        <td th:text="${book.id_author}"></td>
+                                                        <td th:text="${book.author.nane + ' '+ book.author.firstName}"></td>
                                                         <td>
-                                                            <a th:href="@{/author/showUpdateAuthor/{id}(id=${autor.id})}" class="btn btn-warning btn-sm">Editar</a>
-                                                            <a th:href="@{/author/delete-author/{id}(id=${autor.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                                                            <a href="" class="btn btn-warning btn-sm">Editar</a>
+                                                            <a href="" class="btn btn-danger btn-sm">Eliminar</a>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -69,8 +70,6 @@
         </div>
     </div>
 </div>
-
-
 <div th:replace="layout/dashboard::script"></div>
 </body>
 </html>

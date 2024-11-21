@@ -1,7 +1,11 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -10,24 +14,41 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "El Nombre es Obligatorio")
     private String name;
+    @NotEmpty(message = "Apellido Paterno es Obligatori")
     @Column(name = "first_name")
     private String firstName;
+    @NotEmpty(message = "Apellido Materno es Obligatori")
     @Column(name = "last_name")
     private String lastName;
     private String direction;
     @Column(unique = true)
-    private char dni;
+    private String dni;
+    @NotEmpty(message = "El Correo es Obligatori")
+    @Size(min = 7, max = 20, message = "El Correo deve ser como minimo 6 a 20 caracteres")
+    @Column(unique = true, nullable = true)
+    private String email;
+    private String password;
     @Column(name = "create_at")
     private Date createAt;
     @Column(name = "update_at")
     private Date updateAt;
 
+    @ManyToMany(fetch =FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user-role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+
+    )
+    private Collection<Role> roles;
+
 
     public Users() {
     }
 
-    public Users(Long id, String name, String firstName, String lastName, String direction, char dni, Date createAt, Date updateAt) {
+    public Users(Long id, String name, String firstName, String lastName, String direction, String dni, Date createAt, Date updateAt) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -36,6 +57,30 @@ public class Users {
         this.dni = dni;
         this.createAt = createAt;
         this.updateAt = updateAt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -78,11 +123,11 @@ public class Users {
         this.direction = direction;
     }
 
-    public char getDni() {
+    public String  getDni() {
         return dni;
     }
 
-    public void setDni(char dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

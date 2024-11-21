@@ -1,6 +1,9 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.Date;
 
@@ -12,6 +15,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Debes especificar el Nombre")
     private String nane;
     @Column(name = "first_name")
     private String firstName;

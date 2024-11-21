@@ -1,6 +1,9 @@
 package com.demojavadj.appweb.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -11,9 +14,12 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "code_book")
+    @NotNull(message = "Debes especificar el codigo")
+    @Size(min = 1, max = 50, message = "El nombre debe medir entre 1 y 50")
     private String codeBook;
     private String name;
     private String title;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date plubisher;
     private char sbn;
     @Column(name = "create_at")
@@ -26,17 +32,6 @@ public class Book {
     private Author author;
 
     public Book() {
-    }
-
-    public Book(Long id, String codeBook, String name, String title, Date plubisher, char sbn, Date createAt, Date updateAt) {
-        this.id = id;
-        this.codeBook = codeBook;
-        this.name = name;
-        this.title = title;
-        this.plubisher = plubisher;
-        this.sbn = sbn;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public Long getId() {
@@ -101,5 +96,13 @@ public class Book {
 
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }

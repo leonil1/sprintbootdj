@@ -28,7 +28,9 @@ public class Loan {
     @JoinColumn(name = "id_libro")
     private Book book;
 
-
+    @ManyToOne
+    @JoinColumn(name = "id_student")
+    private Student student;
 
     public Loan() {
     }
