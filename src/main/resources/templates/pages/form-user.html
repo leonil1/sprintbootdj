@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/dashboard:: header">
+</head>
+<body>
+<div class="layout-wrapper layout-content-navbar" >
+    <div class="layout-container">
+       <span th:replace="fragments/asider :: sidebar">
+       </span>
+        <div class="layout-page">
+            <span th:replace="fragments/header::header"></span>
+            <div class="content-wrapper">
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4 order-0">
+                            <div class="card">
+                                <div class="d-flex align-items-end row">
+                                    <div class="col-sm-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">Registrar Usuario 🎉</h5>
+                                            <form th:action="@{/user/save}" th:object="${registerDto}" method="post">
+                                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                                                <div>
+                                                    <label >Nombres</label>
+                                                    <input type="text" th:field="${registerDto.firstName}" class="form-control col-md-6" placeholder="Juanito">
+                                                    <small th:if="${#fields.hasErrors('firstName')}"  th:errorclass="text-danger"
+                                                           th:errors="${registerDto.firstName}"></small>
+                                                </div>
+                                                <div>
+                                                    <label>Apellidos</label>
+                                                    <input type="text" th:field="${registerDto.lastName}" class="form-control" placeholder=" perez">
+                                                    <small th:if="${#fields.hasErrors('lastName')}"  th:errorclass="text-danger"
+                                                           th:errors="${registerDto.lastName}"></small>
+                                                </div>
+                                                <div>
+                                                    <label>email</label>
+                                                    <input type="email" th:field="${registerDto.email}" class="form-control" placeholder="juanito@gmail.com">
+                                                    <small th:if="${#fields.hasErrors('email')}"  th:errorclass="text-danger"
+                                                           th:errors="${registerDto.email}"></small>
+                                                </div>
+                                                <div>
+                                                    <label>DNI</label>
+                                                    <input type="text" th:field="${registerDto.dni}" class="form-control" placeholder="8547589">
+                                                </div>
+                                                <div>
+                                                    <label>Direccion</label>
+                                                    <input type="text" th:field="${registerDto.direction}" class="form-control" placeholder="a juan pablo">
+                                                </div>
+                                                <div>
+                                                    <label>Contraseña</label>
+                                                    <input type="password" th:field="${registerDto.password}" class="form-control" placeholder="**********">
+                                                </div>
+                                                <div>
+                                                    <label>Confirme Contraseña</label>
+                                                    <input type="password" th:field="${registerDto.confirmPassword}" class="form-control" placeholder="******">
+                                                </div>
+
+                                                <div class="mt-3">
+                                                    <button type="submit" class="btn btn-success btn-sm">Gurdar</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span th:replace="fragments/footer::footer"></span>
+                <div class="content-backdrop fade"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="layout/dashboard::script"></div>
+</body>
+</html>

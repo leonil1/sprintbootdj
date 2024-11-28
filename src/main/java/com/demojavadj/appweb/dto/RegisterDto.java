@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class RegisterDto {
+
     @NotEmpty
     private String firstName;
     @NotEmpty
@@ -17,6 +18,20 @@ public class RegisterDto {
     @Size(min = 6, message = "Minimum Password length id 6 characters")
     private String password;
     private String confirmPassword;
+
+    public RegisterDto() {
+    }
+
+    public RegisterDto(String firstName, String lastName, String email, String dni, String direction, String password,
+                       String confirmPassword) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.dni = dni;
+        this.direction = direction;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+    }
 
     public @NotEmpty String getFirstName() {
         return firstName;
